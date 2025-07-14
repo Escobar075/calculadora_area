@@ -4,6 +4,81 @@
 #include <locale.h>
 #include <math.h>
 
+// Enumeração para os tipos de figuras
+enum Formatos { TRIANGULO, QUADRILATERO, PENTAGONO, HEXAGONO, CIRCUNFERENCIA, INVALIDO };
+
+// Protótipos das funções
+int identificarFormato(char* letra);
+void calcularAreaTriangulo();
+void calcularAreaQuadrilatero();
+void calcularAreaPentagono();
+void calcularAreaHexagono();
+void calcularAreaCircunferencia();
+
+int main(void) {
+    setlocale(LC_ALL, "");
+    char letra[20], again[5];
+
+    do {
+        printf("\n   Escolha dentre as opcoes abaixo a figura geometrica para calcular a area:\n");
+        printf("   A) Triangulo\n   B) Quadrilatero\n   C) Pentagono\n   D) Hexagono\n   E) Circunferencia\n   => ");
+        scanf("%s", letra);
+
+        switch (identificarFormato(letra)) {
+            case TRIANGULO:
+                calcularAreaTriangulo();
+                break;
+            case QUADRILATERO:
+                calcularAreaQuadrilatero();
+                break;
+            case PENTAGONO:
+                calcularAreaPentagono();
+                break;
+            case HEXAGONO:
+                calcularAreaHexagono();
+                break;
+            case CIRCUNFERENCIA:
+                calcularAreaCircunferencia();
+                break;
+            default:
+                printf("\n =============== ERRO-1 ===============\n");
+                printf("\nFigura invalida. TENTE NOVAMENTE!\n");
+                break;
+        }
+
+        printf("\n   Quer continuar outra operacao? (sim/nao): ");
+        scanf("%s", again);
+        system("cls");
+
+    } while (strcasecmp(again, "sim") == 0 || strcasecmp(again, "s") == 0);
+
+    printf("\nAgradeco por utilizar nossos servicos.\n");
+    printf("\n=============== FINALIZADO ===============\n");
+    return 0;
+}
+
+int identificarFormato(char* letra) {
+    if (strcasecmp(letra, "A") == 0 || strcasecmp(letra, "triangulo") == 0 || strcasecmp(letra, "triângulo") == 0)
+        return TRIANGULO;
+    else if (strcasecmp(letra, "B") == 0 || strcasecmp(letra, "quadrilatero") == 0 || strcasecmp(letra, "quadrilátero") == 0)
+        return QUADRILATERO;
+    else if (strcasecmp(letra, "C") == 0 || strcasecmp(letra, "pentagono") == 0 || strcasecmp(letra, "pentágono") == 0)
+        return PENTAGONO;
+    else if (strcasecmp(letra, "D") == 0 || strcasecmp(letra, "hexagono") == 0 || strcasecmp(letra, "hexágono") == 0)
+        return HEXAGONO;
+    else if (strcasecmp(letra, "E") == 0 || strcasecmp(letra, "circunferencia") == 0 || strcasecmp(letra, "circunferência") == 0)
+        return CIRCUNFERENCIA;
+    else
+        return INVALIDO;
+}
+
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
+#include <math.h>
+
 enum Formatos { TRIANGULO, QUADRILATERO, PENTAGONO, HEXAGONO, CIRCUNFERENCIA, INVALIDO };
 
 int identificarFormato(char* letra) {
@@ -276,5 +351,5 @@ system("cls");
 	printf("\n ===============FINALIZADO=============== \n");
 	return 0;
 }
-
+*/
 
