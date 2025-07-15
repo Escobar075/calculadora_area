@@ -18,7 +18,7 @@ int main(void) {
     char letra[20], again[5];
 
     do {
-        printf("\n   Escolha dentre as opcoes abaixo a figura geometrica para calcular a area:\n");
+        printf("\n   Escolha dentre as opcoes abaixo a figura geometrica para calcular a área:\n");
         printf("   A) Triangulo\n   B) Quadrilatero\n   C) Pentagono\n   D) Hexagono\n   E) Circunferencia\n   => ");
         scanf("%s", letra);
 
