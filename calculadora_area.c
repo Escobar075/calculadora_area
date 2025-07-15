@@ -4,6 +4,324 @@
 #include <locale.h>
 #include <math.h>
 
+void limparEntrada() {
+    while (getchar() != '\n');
+}
+
+void limparTela() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
+enum Formatos { TRIANGULO, QUADRILATERO, PENTAGONO, HEXAGONO, CIRCUNFERENCIA, INVALIDO };
+
+int identificarFormato(char* letra);
+void calcularAreaTriangulo();
+void calcularAreaQuadrilatero();
+void calcularAreaPentagono();
+void calcularAreaHexagono();
+void calcularAreaCircunferencia();
+
+int main(void) {
+    setlocale(LC_ALL, "Portuguese");
+    char letra[20], again[5];
+
+    do {
+        printf("\n   Escolha dentre as opcoes abaixo a figura geometrica para calcular a área:\n");
+        printf("   A) Triangulo\n   B) Quadrilatero\n   C) Pentagono\n   D) Hexagono\n   E) Circunferencia\n   => ");
+        scanf("%s", letra);
+
+        switch (identificarFormato(letra)) {
+            case TRIANGULO:
+                calcularAreaTriangulo();
+                break;
+            case QUADRILATERO:
+                calcularAreaQuadrilatero();
+                break;
+            case PENTAGONO:
+                calcularAreaPentagono();
+                break;
+            case HEXAGONO:
+                calcularAreaHexagono();
+                break;
+            case CIRCUNFERENCIA:
+                calcularAreaCircunferencia();
+                break;
+            default:
+                printf("\n =============== ERRO-1 ===============\n");
+                printf("\nFigura invalida. TENTE NOVAMENTE!\n");
+                break;
+        }
+
+        printf("\n   Quer continuar outra operacao? (sim/nao): ");
+        scanf("%s", again);
+        limparTela();
+
+    } while (strcasecmp(again, "sim") == 0 || strcasecmp(again, "s") == 0);
+
+    printf("\nAgradeco por utilizar nossos servicos.\n");
+    printf("\n=============== FINALIZADO ===============\n");
+    return 0;
+}
+
+int identificarFormato(char* letra) {
+    if (strcasecmp(letra, "A") == 0 || strcasecmp(letra, "triangulo") == 0 || strcasecmp(letra, "triângulo") == 0)
+        return TRIANGULO;
+    else if (strcasecmp(letra, "B") == 0 || strcasecmp(letra, "quadrilatero") == 0 || strcasecmp(letra, "quadrilátero") == 0)
+        return QUADRILATERO;
+    else if (strcasecmp(letra, "C") == 0 || strcasecmp(letra, "pentagono") == 0 || strcasecmp(letra, "pentágono") == 0)
+        return PENTAGONO;
+    else if (strcasecmp(letra, "D") == 0 || strcasecmp(letra, "hexagono") == 0 || strcasecmp(letra, "hexágono") == 0)
+        return HEXAGONO;
+    else if (strcasecmp(letra, "E") == 0 || strcasecmp(letra, "circunferencia") == 0 || strcasecmp(letra, "circunferência") == 0)
+        return CIRCUNFERENCIA;
+    else
+        return INVALIDO;
+}
+
+void calcularAreaTriangulo() {
+    double modo, a, b, c, h, s, angulo, R, area;
+
+    printf("\n Você escolheu o triângulo, agora escolha o modo de calcular a área:\n");
+    printf(" 1 - Altura com base\n");
+    printf(" 2 - Todos os lados\n");
+    printf(" 3 - Com um ângulo\n");
+    printf(" 4 - Triângulo equilátero\n");
+    printf(" 5 - Triângulo retângulo\n   ");
+    if (scanf("%lf", &modo) != 1) {
+        printf("\nEntrada inválida para o modo. Tente novamente.\n");
+        limparEntrada();
+        return;
+    }
+
+    switch ((int)modo) {
+        case 1:
+            printf("\n Digite o valor da base: ");
+            if (scanf("%lf", &a) != 1) break;
+            printf("\n Digite o valor da altura: ");
+            if (scanf("%lf", &h) != 1) break;
+            area = (h * a) / 2;
+            printf("\n A área do triângulo é: %.5lf\n", area);
+            break;
+
+        case 2:
+            printf("\n Digite um lado: ");
+            if (scanf("%lf", &a) != 1) break;
+            printf("\n Outro lado: ");
+            if (scanf("%lf", &b) != 1) break;
+            printf("\n O terceiro lado: ");
+            if (scanf("%lf", &c) != 1) break;
+            if (a < b + c && b < a + c && c < a + b) {
+                s = (a + b + c) / 2;
+                area = sqrt(s * (s - a) * (s - b) * (s - c));
+                printf("\n A área do triângulo é: %.5lf\n", area);
+            } else {
+                printf("\n Lados inválidos. TENTE NOVAMENTE!\n");
+            }
+            break;
+
+        case 3:
+            printf("\n Digite um lado: ");
+            if (scanf("%lf", &a) != 1) break;
+            printf("\n Digite outro lado: ");
+            if (scanf("%lf", &b) != 1) break;
+            printf("\n Digite o ângulo (graus): ");
+            if (scanf("%lf", &angulo) != 1) break;
+            R = angulo * M_PI / 180;
+            area = a * b * sin(R) / 2;
+            printf("\n A área do triângulo é: %.5lf\n", area);
+            break;
+
+        case 4:
+            printf("\n Digite o lado do triângulo equilátero: ");
+            if (scanf("%lf", &a) != 1) break;
+            area = (pow(a, 2) * sqrt(3)) / 4;
+            printf("\n A área do triângulo é: %.5lf\n", area);
+            break;
+
+        case 5:
+            printf("\n Digite a base: ");
+            if (scanf("%lf", &a) != 1) break;
+            printf("\n Digite a altura: ");
+            if (scanf("%lf", &h) != 1) break;
+            area = a * h / 2;
+            printf("\n A área do triângulo é: %.5lf\n", area);
+            break;
+
+        default:
+            printf("\nModo inválido. TENTE NOVAMENTE!\n");
+    }
+    limparEntrada();
+}
+
+void calcularAreaQuadrilatero() {
+    double modo, area, a, b, h;
+
+    printf("\n Você escolheu o quadrilátero. Qual tipo é:\n 1 - Quadrado\n 2 - Retângulo\n 3 - Losango\n 4 - Trapézio\n 5 - Paralelograma\n   ");
+    if (scanf("%lf", &modo) != 1) {
+        printf("\nEntrada inválida para o modo. Tente novamente.\n");
+        limparEntrada();
+        return;
+    }
+
+    switch ((int)modo) {
+        case 1:
+            printf("\n Digite o lado do quadrado: ");
+            if (scanf("%lf", &a) != 1) break;
+            area = pow(a, 2);
+            printf("\n A área do quadrado é: %.5lf\n", area);
+            break;
+
+        case 2:
+            printf("\n Digite a base do retângulo: ");
+            if (scanf("%lf", &a) != 1) break;
+            printf("\n Digite a altura do retângulo: ");
+            if (scanf("%lf", &b) != 1) break;
+            area = a * b;
+            printf("\n A área do retângulo é: %.5lf\n", area);
+            break;
+
+        case 3:
+            printf("\n Digite a diagonal maior do losango: ");
+            if (scanf("%lf", &a) != 1) break;
+            printf("\n Digite a diagonal menor do losango: ");
+            if (scanf("%lf", &b) != 1) break;
+            if (a > b) {
+                area = (a * b) / 2;
+                printf("\n A área do losango é: %.5lf\n", area);
+            } else {
+                printf("\n A diagonal maior deve ser realmente maior. TENTE NOVAMENTE!\n");
+            }
+            break;
+
+        case 4:
+            printf("\n Digite a base maior do trapézio: ");
+            if (scanf("%lf", &a) != 1) break;
+            printf("\n Digite a base menor do trapézio: ");
+            if (scanf("%lf", &b) != 1) break;
+            printf("\n Digite a altura do trapézio: ");
+            if (scanf("%lf", &h) != 1) break;
+            if (a > b) {
+                area = ((a + b) * h) / 2;
+                printf("\n A área do trapézio é: %.5lf\n", area);
+            } else {
+                printf("\n A base maior deve ser realmente maior. TENTE NOVAMENTE!\n");
+            }
+            break;
+
+        case 5:
+            printf("\n Digite a base do paralelograma: ");
+            if (scanf("%lf", &a) != 1) break;
+            printf("\n Digite a altura do paralelograma: ");
+            if (scanf("%lf", &h) != 1) break;
+            area = a * h;
+            printf("\n A área do paralelograma é: %.5lf\n", area);
+            break;
+
+        default:
+            printf("\nModo inválido. TENTE NOVAMENTE!\n");
+    }
+    limparEntrada();
+}
+
+void calcularAreaPentagono() {
+    double a, area;
+    printf("\n Você escolheu o pentágono regular");
+    printf("\n Digite o valor do lado: ");
+    if (scanf("%lf", &a) != 1) {
+        printf("\nEntrada inválida. TENTE NOVAMENTE!\n");
+        limparEntrada();
+        return;
+    }
+    area = (5 * pow(a, 2)) / (4 * tan(M_PI / 5));
+    printf("\n A área do pentágono é: %.5lf\n", area);
+    limparEntrada();
+}
+
+void calcularAreaHexagono() {
+    double a, area;
+    printf("\n Você escolheu o hexágono regular");
+    printf("\n Digite o valor do lado: ");
+    if (scanf("%lf", &a) != 1) {
+        printf("\nEntrada inválida. TENTE NOVAMENTE!\n");
+        limparEntrada();
+        return;
+    }
+    area = 3 * (pow(a, 2) * sqrt(3)) / 2;
+    printf("\n A área do hexágono é: %.5lf\n", area);
+    limparEntrada();
+}
+
+void calcularAreaCircunferencia() {
+    double r, R, b, modo, angulo, area;
+
+    printf("\n Você escolheu a circunferência. Escolha uma opção:\n 1 - Área\n 2 - Setor circular\n 3 - Círculo anular\n   ");
+    if (scanf("%lf", &modo) != 1) {
+        printf("\nEntrada inválida. TENTE NOVAMENTE!\n");
+        limparEntrada();
+        return;
+    }
+
+    switch ((int)modo) {
+        case 1:
+            printf("\n Digite o valor do raio: ");
+            if (scanf("%lf", &r) != 1) break;
+            area = pow(r, 2) * M_PI;
+            printf("\n A área da circunferência é: %.5lf\n", area);
+            break;
+
+        case 2:
+            printf("\n Digite o valor do raio: ");
+            if (scanf("%lf", &r) != 1) break;
+            printf("\n Escolha a unidade do ângulo:\n 1 - Grau\n 2 - Radiano\n 3 - Grado\n   ");
+            if (scanf("%lf", &b) != 1) break;
+            printf("\n Digite o valor do ângulo: ");
+            if (scanf("%lf", &angulo) != 1) break;
+
+            if (b == 1) {
+                area = angulo * pow(r, 2) * M_PI / 360;
+            } else if (b == 2) {
+                area = angulo * M_PI * pow(r, 2) / 2;
+            } else if (b == 3) {
+                area = angulo * M_PI * pow(r, 2) / 400;
+            } else {
+                printf("\n Unid. de ângulo inválida.\n");
+                return;
+            }
+            printf("\n A área do setor circular é: %.5lf\n", area);
+            break;
+
+        case 3:
+            printf("\n Digite o raio maior: ");
+            if (scanf("%lf", &R) != 1) break;
+            printf("\n Digite o raio menor: ");
+            if (scanf("%lf", &r) != 1) break;
+            if (R > r) {
+                area = M_PI * (pow(R, 2) - pow(r, 2));
+                printf("\n A área do círculo anular é: %.5lf\n", area);
+            } else {
+                printf("\n O raio maior deve ser maior que o menor.\n");
+            }
+            break;
+
+        default:
+            printf("\nModo inválido. TENTE NOVAMENTE!\n");
+    }
+    limparEntrada();
+}
+
+
+
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
+#include <math.h>
+
 enum Formatos { TRIANGULO, QUADRILATERO, PENTAGONO, HEXAGONO, CIRCUNFERENCIA, INVALIDO };
 
 int identificarFormato(char* letra);
@@ -290,3 +608,4 @@ void limparTela() {
     		system("clear");
 	#endif
 }
+*/
