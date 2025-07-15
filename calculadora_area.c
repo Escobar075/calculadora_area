@@ -283,7 +283,6 @@ void calcularAreaCircunferencia() {
 	}
 }
 
-}
 void limparTela() {
 	#ifdef _WIN32
    		system("cls");
