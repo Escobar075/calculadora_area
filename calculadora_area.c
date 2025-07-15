@@ -69,13 +69,6 @@ int identificarFormato(char* letra) {
     else
         return INVALIDO;
 }
-void limparTela() {
-	#ifdef _WIN32
-   		system("cls");
-	#else
-    		system("clear");
-	#endif
-}
 
 void calcularAreaTriangulo() {
     double modo, a, b, c, h, s, angulo, R, area;
@@ -288,4 +281,13 @@ void calcularAreaCircunferencia() {
 		printf("\n ===============ERRO-9=============== \n");
 		printf("\n TENTE NOVAMENTE! \n");
 	}
+}
+
+}
+void limparTela() {
+	#ifdef _WIN32
+   		system("cls");
+	#else
+    		system("clear");
+	#endif
 }
