@@ -46,7 +46,7 @@ int main(void) {
 
         printf("\n   Quer continuar outra operacao? (sim/nao): ");
         scanf("%s", again);
-        system("cls");
+        limparTela()
 
     } while (strcasecmp(again, "sim") == 0 || strcasecmp(again, "s") == 0);
 
@@ -68,6 +68,13 @@ int identificarFormato(char* letra) {
         return CIRCUNFERENCIA;
     else
         return INVALIDO;
+}
+void limparTela() {
+	#ifdef _WIN32
+   		system("cls");
+	#else
+    		system("clear");
+	#endif
 }
 
 void calcularAreaTriangulo() {
