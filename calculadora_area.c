@@ -161,37 +161,37 @@ void calcularAreaQuadrilatero() {
 		area = a * b;
 		printf("\n A área do retângulo é:%.5lf\n", area);	
 	}
-	else if(modo == 3) {
-		if(a > b) {
-			printf("\n Você escolheu o losango");
-			printf("\n Digite a diagonal maior do losango: ");
-			scanf("%lf", &a);
-			printf("\n Digite a diagonal menor do losango: ");
-			scanf("%lf", &b);
-			area = (a * b) / 2;
-			printf("\n A área do losango é:%.5lf\n", area);	
-		}
+	else if (modo == 3) {
+    		printf("\n Você escolheu o losango");
+		printf("\n Digite a diagonal maior do losango: ");
+    		scanf("%lf", &a);
+    		printf("\n Digite a diagonal menor do losango: ");
+    		scanf("%lf", &b);
+    		if (a > b) {
+        		area = (a * b) / 2;
+        		printf("\n A área do losango é: %.5lf\n", area);
+   		} 
 		else {
-			printf("\n ===============ERRO-4=============== \n");
-			printf("\n TENTE NOVAMENTE! \n");
-		}
+        		printf("\n ===============ERRO-4=============== \n");
+        		printf("\n A diagonal maior deve ser realmente maior. TENTE NOVAMENTE! \n");
+    		}
 	}
-	else if(modo == 4) {
-		if(a > b) {
-			printf("\n VocÊ escolheu o trapézio");
-			printf("\n Digite a base maior do trapézio: ");
-			scanf("%lf", &a);
-			printf("\n Digite a base menor do trapézio: ");
-			scanf("%lf", &b);
-			printf("\n Digite a altura do trapézio: ");
-			scanf("%lf", &h);
-			area = ((a + b) * h) / 2;
-            		printf("\n A área do trapézio é:%.5lf\n", area);
-		}
-		else {
-			printf("\n ===============ERRO-5=============== \n");
-			printf("\n TENTE NOVAMENTE! \n");
-		}
+	else if (modo == 4) {  // Trapézio
+    		printf("\n Você escolheu o trapézio");
+    		printf("\n Digite a base maior do trapézio: ");
+    		scanf("%lf", &a);
+    		printf("\n Digite a base menor do trapézio: ");
+    		scanf("%lf", &b);
+    		printf("\n Digite a altura do trapézio: ");
+    		scanf("%lf", &h);
+			if (a > b) {
+        			area = ((a + b) * h) / 2;
+        			printf("\n A área do trapézio é: %.5lf\n", area);
+    			}
+			else {
+        			printf("\n ===============ERRO-5=============== \n");
+       				printf("\n A base maior deve ser realmente maior. TENTE NOVAMENTE! \n");
+    			}
 	}
 	else if(modo == 5) {
 		printf("\n Você escolheu o paralelograma");
