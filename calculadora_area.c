@@ -4,10 +4,8 @@
 #include <locale.h>
 #include <math.h>
 
-// Enumeração para os tipos de figuras
 enum Formatos { TRIANGULO, QUADRILATERO, PENTAGONO, HEXAGONO, CIRCUNFERENCIA, INVALIDO };
 
-// Protótipos das funções
 int identificarFormato(char* letra);
 void calcularAreaTriangulo();
 void calcularAreaQuadrilatero();
