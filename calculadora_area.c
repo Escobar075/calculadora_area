@@ -244,7 +244,7 @@ void calcularAreaCircunferencia() {
 }
 
 int main(void) {
-    setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "Portuguese");
     char letra[20], again[5];
 
     do {
