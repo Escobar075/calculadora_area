@@ -13,6 +13,48 @@ void calcularAreaPentagono();
 void calcularAreaHexagono();
 void calcularAreaCircunferencia();
 
+int main(void) {
+    setlocale(LC_ALL, "Portuguese");
+    char letra[20], again[5];
+
+    do {
+        printf("\n   Escolha dentre as opcoes abaixo a figura geometrica para calcular a area:\n");
+        printf("   A) Triangulo\n   B) Quadrilatero\n   C) Pentagono\n   D) Hexagono\n   E) Circunferencia\n   => ");
+        scanf("%s", letra);
+
+        switch (identificarFormato(letra)) {
+            case TRIANGULO:
+                calcularAreaTriangulo();
+                break;
+            case QUADRILATERO:
+                calcularAreaQuadrilatero();
+                break;
+            case PENTAGONO:
+                calcularAreaPentagono();
+                break;
+            case HEXAGONO:
+                calcularAreaHexagono();
+                break;
+            case CIRCUNFERENCIA:
+                calcularAreaCircunferencia();
+                break;
+            default:
+                printf("\n =============== ERRO-1 ===============\n");
+                printf("\nFigura invalida. TENTE NOVAMENTE!\n");
+                break;
+        }
+
+        printf("\n   Quer continuar outra operacao? (sim/nao): ");
+        scanf("%s", again);
+        system("cls");
+
+    } while (strcasecmp(again, "sim") == 0 || strcasecmp(again, "s") == 0);
+
+    printf("\nAgradeco por utilizar nossos servicos.\n");
+    printf("\n=============== FINALIZADO ===============\n");
+    return 0;
+}
+
 int identificarFormato(char* letra) {
     if (strcasecmp(letra, "A") == 0 || strcasecmp(letra, "triangulo") == 0 || strcasecmp(letra, "triângulo") == 0)
         return TRIANGULO;
@@ -239,46 +281,4 @@ void calcularAreaCircunferencia() {
 		printf("\n ===============ERRO-9=============== \n");
 		printf("\n TENTE NOVAMENTE! \n");
 	}
-}
-
-int main(void) {
-    setlocale(LC_ALL, "Portuguese");
-    char letra[20], again[5];
-
-    do {
-        printf("\n   Escolha dentre as opcoes abaixo a figura geometrica para calcular a area:\n");
-        printf("   A) Triangulo\n   B) Quadrilatero\n   C) Pentagono\n   D) Hexagono\n   E) Circunferencia\n   => ");
-        scanf("%s", letra);
-
-        switch (identificarFormato(letra)) {
-            case TRIANGULO:
-                calcularAreaTriangulo();
-                break;
-            case QUADRILATERO:
-                calcularAreaQuadrilatero();
-                break;
-            case PENTAGONO:
-                calcularAreaPentagono();
-                break;
-            case HEXAGONO:
-                calcularAreaHexagono();
-                break;
-            case CIRCUNFERENCIA:
-                calcularAreaCircunferencia();
-                break;
-            default:
-                printf("\n =============== ERRO-1 ===============\n");
-                printf("\nFigura invalida. TENTE NOVAMENTE!\n");
-                break;
-        }
-
-        printf("\n   Quer continuar outra operacao? (sim/nao): ");
-        scanf("%s", again);
-        system("cls");
-
-    } while (strcasecmp(again, "sim") == 0 || strcasecmp(again, "s") == 0);
-
-    printf("\nAgradeco por utilizar nossos servicos.\n");
-    printf("\n=============== FINALIZADO ===============\n");
-    return 0;
 }
