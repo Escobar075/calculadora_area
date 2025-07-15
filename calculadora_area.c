@@ -46,7 +46,7 @@ int main(void) {
 
         printf("\n   Quer continuar outra operacao? (sim/nao): ");
         scanf("%s", again);
-        limparTela()
+        limparTela();
 
     } while (strcasecmp(again, "sim") == 0 || strcasecmp(again, "s") == 0);
 
