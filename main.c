@@ -29,15 +29,15 @@ int main(void) {
                 calcularAreaCircunferencia();
                 break;
             default:
-                printf("\nFigura inv·lida. TENTE NOVAMENTE!\n");
+                printf("\nFigura inv√°lida. TENTE NOVAMENTE!\n");
         }
 
-        printf("\nQuer continuar outra operaÁ„o? (sim/n„o): ");
+        printf("\nQuer continuar outra opera√ß√£o? (sim/n√£o): ");
         scanf("%s", again);
 
     } while (strcasecmp(again, "sim") == 0 || strcasecmp(again, "s") == 0);
 
 	limparTela();
-    printf("\nObrigado por utilizar a Calculadora de ¡reas!\n");
+    printf("\nObrigado por utilizar a Calculadora de √Åreas!\n");
     return 0;
 }
