@@ -8,7 +8,8 @@ void limparEntrada() {
 
 void limparTela() {
 #ifdef _WIN32
-    system("cls");
+    //system("cls");
+    printf("\e[1;1H\e[2J");
 #else
     system("clear");
 #endif
