@@ -3,20 +3,20 @@
 #include "menu.h"
 
 void mostrarMenuPrincipal() {
-    printf("\nEscolha a figura geomÈtrica para calcular a ·rea:\n");
-    printf(" A) Tri‚ngulo\n B) Quadril·tero\n C) Pent·gono\n D) Hex·gono\n E) CircunferÍncia\n => ");
+    printf("\nEscolha a figura geom√©trica para calcular a √°rea:\n");
+    printf(" A) Tri√¢ngulo\n B) Quadril√°tero\n C) Pent√°gono\n D) Hex√°gono\n E) Circunfer√™ncia\n => ");
 }
 
-int identificarFormato(char* letra) {
-    if (strcasecmp(letra, "A") == 0 || strcasecmp(letra, "triangulo") == 0 || strcasecmp(letra, "tri‚ngulo") == 0)
+int identificarFormato(char* alternativa) {
+    if (strcasecmp(alternativa, "A") == 0 || strcasecmp(alternativa, "triangulo") == 0 || strcasecmp(alternativa, "tri√¢ngulo") == 0)
         return TRIANGULO;
-    else if (strcasecmp(letra, "B") == 0 || strcasecmp(letra, "quadrilatero") == 0 || strcasecmp(letra, "quadril·tero") == 0)
+    else if (strcasecmp(alternativa, "B") == 0 || strcasecmp(alternativa, "quadrilatero") == 0 || strcasecmp(alternativa, "quadril√°tero") == 0)
         return QUADRILATERO;
-    else if (strcasecmp(letra, "C") == 0 || strcasecmp(letra, "pentagono") == 0 || strcasecmp(letra, "pent·gono") == 0)
+    else if (strcasecmp(alternativa, "C") == 0 || strcasecmp(alternativa, "pentagono") == 0 || strcasecmp(alternativa, "pent√°gono") == 0)
         return PENTAGONO;
-    else if (strcasecmp(letra, "D") == 0 || strcasecmp(letra, "hexagono") == 0 || strcasecmp(letra, "hex·gono") == 0)
+    else if (strcasecmp(alternativa, "D") == 0 || strcasecmp(alternativa, "hexagono") == 0 || strcasecmp(alternativa, "hex√°gono") == 0)
         return HEXAGONO;
-    else if (strcasecmp(letra, "E") == 0 || strcasecmp(letra, "circunferencia") == 0 || strcasecmp(letra, "circunferÍncia") == 0)
+    else if (strcasecmp(alternativa, "E") == 0 || strcasecmp(alternativa, "circunferencia") == 0 || strcasecmp(alternativa, "circunfer√™ncia") == 0)
         return CIRCUNFERENCIA;
     else
         return INVALIDO;
