@@ -5,51 +5,51 @@
 
 void calcularAreaTriangulo() {
     int modo;
-    double a, b, c, h, s, angulo, R, area;
+    double lado_1, lado_2, lado_3, altura, semiperimetro, angulo, radiano, area;
 
-    printf("\nVocÍ escolheu o tri‚ngulo. Escolha o modo de c·lculo:\n");
-    printf(" 1 - Base e altura\n 2 - TrÍs lados\n 3 - Dois lados e ‚ngulo\n 4 - Equil·tero\n 5 - Ret‚ngulo\n => ");
+    printf("\nVoc√™ escolheu o tri√¢ngulo. Escolha o modo de c√°lculo:\n");
+    printf(" 1 - Base e altura\n 2 - Tr√™s lados\n 3 - Dois lados e √¢ngulo\n 4 - Equil√°tero\n 5 - Ret√¢ngulo\n => ");
 
     if (scanf("%d", &modo) != 1) {
-        printf("\nEntrada inv·lida.\n");
+        printf("\nEntrada inv√°lida.\n");
         limparEntrada();
         return;
     }
 
     switch (modo) {
         case 1:
-            if (!lerDouble("\nBase: ", &a) || !lerDouble("Altura: ", &h)) return;
-            area = (a * h) / 2;
+            if (!lerDouble("\nBase: ", &lado_1) || !lerDouble("Altura: ", &altura)) return;
+            area = (lado_1 * altura) / 2;
             break;
         case 2:
-            if (!lerDouble("\nLado 1: ", &a) || !lerDouble("Lado 2: ", &b) || !lerDouble("Lado 3: ", &c)) return;
-            if (a + b > c && a + c > b && b + c > a) {
-                s = (a + b + c) / 2;
-                area = sqrt(s * (s - a) * (s - b) * (s - c));
+            if (!lerDouble("\nLado 1: ", &lado_1) || !lerDouble("Lado 2: ", &lado_2) || !lerDouble("Lado 3: ", &lado_3)) return;
+            if (lado_1 + lado_2 > lado_3 && lado_1 + lado_3 > lado_2 && lado_2 + lado_3 > lado_1) {
+                semiperimetro = (lado_1 + lado_2 + lado_3) / 2;
+                area = sqrt(semiperimetro * (semiperimetro - lado_1) * (semiperimetro - lado_2) * (semiperimetro - lado_3));
             } else {
-                printf("\nLados inv·lidos.\n");
+                printf("\nLados inv√°lidos.\n");
                 return;
             }
             break;
         case 3:
-            if (!lerDouble("\nLado 1: ", &a) || !lerDouble("Lado 2: ", &b) || !lerDouble("¬ngulo (graus): ", &angulo)) return;
-            R = angulo * M_PI / 180;
-            area = a * b * sin(R) / 2;
+            if (!lerDouble("\nLado 1: ", &lado_1) || !lerDouble("Lado 2: ", &lado_2) || !lerDouble("√Çngulo (graus): ", &angulo)) return;
+            radiano = angulo * M_PI / 180;
+            area = lado_1 * lado_2 * sin(radiano) / 2;
             break;
         case 4:
-            if (!lerDouble("\nLado: ", &a)) return;
-            area = (pow(a, 2) * sqrt(3)) / 4;
+            if (!lerDouble("\nLado: ", &lado_1)) return;
+            area = (pow(lado_1, 2) * sqrt(3)) / 4;
             break;
         case 5:
-            if (!lerDouble("\nBase: ", &a) || !lerDouble("Altura: ", &h)) return;
-            area = (a * h) / 2;
+            if (!lerDouble("\nBase: ", &lado_1) || !lerDouble("Altura: ", &altura)) return;
+            area = (lado_1 * altura) / 2;
             break;
         default:
-            printf("\nModo inv·lido.\n");
+            printf("\nModo inv√°lido.\n");
             return;
     }
 
-    printf("\nA ·rea do tri‚ngulo È: %.5lf\n", area);
+    printf("\nA √°rea do tri√¢ngulo √©: %.5lf\n", area);
     limparEntrada();
 }
 
