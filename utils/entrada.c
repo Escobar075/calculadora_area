@@ -18,7 +18,7 @@ int lerDouble(const char* mensagem, double* valor) {
     printf("%s", mensagem);
     if (scanf("%lf", valor) != 1) {
         limparEntrada();
-        printf("\nEntrada inválida. Tente novamente.\n");
+        printf("\nEntrada invÃ¡lida. Tente novamente.\n");
         return 0;
     }
     return 1;
