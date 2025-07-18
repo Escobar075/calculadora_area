@@ -6,13 +6,13 @@
 
 int main(void) {
     setlocale(LC_ALL, "Portuguese");
-    char letra[20], again[5];
+    char alternativa[20], again[5];
 
     do {
         mostrarMenuPrincipal();
-        scanf("%s", letra);
+        scanf("%s", alternativa);
 
-        switch (identificarFormato(letra)) {
+        switch (identificarFormato(alternativa)) {
             case TRIANGULO:
                 calcularAreaTriangulo();
                 break;
