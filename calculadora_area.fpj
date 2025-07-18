@@ -31,6 +31,7 @@
 	<Files>
 		<File Name="main.c"/>
 		<File Name="menu.h"/>
+		<File Name="menu.c"/>
 		<Folder Name="utils">
 			<File Name="entrada.h"/>
 			<File Name="entrada.c"/>
@@ -47,6 +48,5 @@
 			<File Name="circunferencia.h"/>
 			<File Name="circunferencia.c"/>
 		</Folder>
-		<File Name="menu.c"/>
 	</Files>
 </Project>
