@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout>
+	<Files>
+		<File Name="figuras\pentagono.c" Top="No" Tabpos="1" TopLine="1">
+			<Cursor Line="18" Column="2"/>
+		</File>
+		<File Name="figuras\hexagono.c" Top="No" Tabpos="2" TopLine="1">
+			<Cursor Line="18" Column="2"/>
+		</File>
+		<File Name="figuras\circunferencia.c" Top="Yes" Tabpos="3" TopLine="28">
+			<Cursor Line="62" Column="2"/>
+		</File>
+	</Files>
+	<Folders>
+		<Folder Name="figuras" Expanded="Yes"/>
+	</Folders>
+</Layout>
