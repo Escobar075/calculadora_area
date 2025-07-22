@@ -34,10 +34,10 @@ int main(void) {
 
         printf("\nQuer continuar outra operação? (sim/não): ");
         scanf("%s", again);
-
+		limparTela();
+		
     } while (strcasecmp(again, "sim") == 0 || strcasecmp(again, "s") == 0);
 
-	limparTela();
     printf("\nObrigado por utilizar a Calculadora de Áreas!\n");
     return 0;
 }
