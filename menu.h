@@ -6,7 +6,7 @@ enum Formatos {
 };
 
 void mostrarMenuPrincipal();
-int identificarFormato(char* letra);
+int identificarFormato(char* alternativa);
 
 void calcularAreaTriangulo();
 void calcularAreaQuadrilatero();
