@@ -14,19 +14,19 @@ int main(void) {
 
         switch (identificarFormato(alternativa)) {
             case TRIANGULO:
-                calcularAreaTriangulo();
+                menuCalculoAreaTriangulo();
                 break;
             case QUADRILATERO:
-                calcularAreaQuadrilatero();
+                menuCalculoAreaQuadrilatero();
                 break;
             case PENTAGONO:
-                calcularAreaPentagono();
+                menuCalculoAreaPentagono();
                 break;
             case HEXAGONO:
-                calcularAreaHexagono();
+                menuCalculoAreaHexagono();
                 break;
             case CIRCUNFERENCIA:
-                calcularAreaCircunferencia();
+                menuCalculoAreaCircunferencia();
                 break;
             default:
                 printf("\nFigura inválida. TENTE NOVAMENTE!\n");
@@ -38,6 +38,6 @@ int main(void) {
 		
     } while (strcasecmp(again, "sim") == 0 || strcasecmp(again, "s") == 0);
 
-    printf("\nObrigado por utilizar a Calculadora de Áreas!\n");
+    printf("\n Obrigado por utilizar a Calculadora de Áreas!\n");
     return 0;
 }
