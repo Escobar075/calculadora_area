@@ -8,10 +8,10 @@ enum Formatos {
 void mostrarMenuPrincipal();
 int identificarFormato(char* alternativa);
 
-void calcularAreaTriangulo();
-void calcularAreaQuadrilatero();
-void calcularAreaPentagono();
-void calcularAreaHexagono();
-void calcularAreaCircunferencia();
+void menuCalculoAreaTriangulo();
+void menuCalculoAreaQuadrilatero();
+void menuCalculoAreaPentagono();
+void menuCalculoAreaHexagono();
+void menuCalculoAreaCircunferencia();
 
 #endif
