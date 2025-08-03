@@ -3,68 +3,69 @@
 #include "../utils/entrada.h"
 #include "quadrilatero.h"
 
-void calcularAreaQuadrilatero() {
-    double modo, area, lado_1, lado_2, altura, diagonal_1, diagonal_2;
+void calcularAreaQuadrilatero_Quadrado(){
+	double lado, area;
+	
+	if (!lerDouble("\n Digite o lado do quadrado: ", &lado)) return;
+	area = pow(lado, 2);
+	printf("\n A área do quadrilatero é: %.5lf\n", area);
+}
 
-    printf("\n Você escolheu o quadrilátero. Qual tipo é:\n 1 - Quadrado\n 2 - Retângulo\n 3 - Losango\n 4 - Trapézio\n 5 - Paralelograma\n   ");
-    if (scanf("%lf", &modo) != 1) {
-        printf("\nEntrada inválida para o modo. Tente novamente.\n");
-        limparEntrada();
-        return;
-    }
+void calcularAreaQuadrilatero_Rentagulo(){
+	double base, altura, area;
+	
+	if(!lerDouble("\n Digite a base do retangulo: ", &base) || !lerDouble("\n Digite a altura do retangulo: ", &altura)) return;
+	area = base * altura;	
+	printf("\n A área do quadrilatero é: %.5lf\n", area);
+}
+
+void calcularAreaQuadrilatero_Losango(){
+	double diagonal_1, diagonal_2, area;
+	
+	if(!lerDouble("\n Digite a primeira diagonal do losango: ", &diagonal_1) || !lerDouble("\n Digite a segunda diagonal do losango: ", &diagonal_2)) return;
+   	area = (diagonal_1 * diagonal_2) / 2;
+   printf("\n A área do quadrilatero é: %.5lf\n", area);
+}
+
+void calcularAreaQuadrilatero_Trapezio(){
+	double base_1, base_2, altura, area;
+	
+	if(!lerDouble("\n Digite a primeira base do trapézio: ", &base_1) || !lerDouble("\n Digite a segunda base do trapézio: ", &base_2) || !lerDouble("\n Digite a altura do trapézio: ", &altura)) return;
+	area = ((base_1 + base_2) * altura) / 2;
+	printf("\n A área do quadrilatero é: %.5lf\n", area);
+}
+
+void calcularAreaQuadrilatero_Paralelograma(){
+	double base, altura, area;
+	
+	if(!lerDouble("\n Digite a base do paralelograma: ", &base) || !lerDouble("\n Digite a altura do paralelograma: ", &altura)) return;
+	area = base * altura;
+ 	printf("\n A área do quadrilatero é: %.5lf\n", area);
+}
+void menuCalculoAreaQuadrilatero() {
+	int modo;
+	
+	if(!lerInt("\n Escolha o modo de cálculo do quadrilátero: \n 1 - Quadrado\n 2 - Retângulo\n 3 - Losango\n 4 - Trapézio\n 5 - Paralelograma\n  => ", &modo)) return;
 
     switch ((int)modo) {
         case 1:
-            printf("\n Digite o lado do quadrado: ");
-            if (scanf("%lf", &lado_1) != 1) break;
-            area = pow(lado_1, 2);
-            printf("\n A área do quadrado é: %.5lf\n", area);
+            calcularAreaQuadrilatero_Quadrado();
             break;
 
         case 2:
-            printf("\n Digite a base do retângulo: ");
-            if (scanf("%lf", &lado_1) != 1) break;
-            printf("\n Digite a altura do retângulo: ");
-            if (scanf("%lf", &lado_2) != 1) break;
-            area = lado_1 * lado_2;
-            printf("\n A área do retângulo é: %.5lf\n", area);
+			calcularAreaQuadrilatero_Rentagulo();
             break;
 
         case 3:
-            printf("\n Digite a diagonal maior do losango: ");
-            if (scanf("%lf", &diagonal_1) != 1) break;
-            printf("\n Digite a diagonal menor do losango: ");
-            if (scanf("%lf", &diagonal_2) != 1) break;
-            if (diagonal_1 > diagonal_2) {
-                area = (diagonal_1 * diagonal_2) / 2;
-                printf("\n A área do losango é: %.5lf\n", area);
-            } else {
-                printf("\n A diagonal maior deve ser realmente maior. TENTE NOVAMENTE!\n");
-            }
+            calcularAreaQuadrilatero_Losango();
             break;
-
+ 
         case 4:
-            printf("\n Digite a base maior do trapézio: ");
-            if (scanf("%lf", &lado_1) != 1) break;
-            printf("\n Digite a base menor do trapézio: ");
-            if (scanf("%lf", &lado_2) != 1) break;
-            printf("\n Digite a altura do trapézio: ");
-            if (scanf("%lf", &altura) != 1) break;
-            if (lado_1 > lado_2) {
-                area = ((lado_1 + lado_2) * altura) / 2;
-                printf("\n A área do trapézio é: %.5lf\n", area);
-            } else {
-                printf("\n A base maior deve ser realmente maior. TENTE NOVAMENTE!\n");
-            }
+			calcularAreaQuadrilatero_Trapezio();
             break;
 
         case 5:
-            printf("\n Digite a base do paralelograma: ");
-            if (scanf("%lf", &lado_1) != 1) break;
-            printf("\n Digite a altura do paralelograma: ");
-            if (scanf("%lf", &altura) != 1) break;
-            area = lado_1 * altura;
-            printf("\n A área do paralelograma é: %.5lf\n", area);
+			calcularAreaQuadrilatero_Paralelograma();
             break;
 
         default:
